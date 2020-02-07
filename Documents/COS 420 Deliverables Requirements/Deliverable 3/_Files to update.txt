@@ -1,0 +1,19 @@
+Update Product Backlog and Sprint Backlog documents
+
+Update the Team Member Report document
+
+Update Kanban board on Zenhub
+
+Update SRS document
+
+Update Use Case Models and Descriptions document with potential new use cases
+
+Update Peer-Review Report document
+
+Update GitHub and push software development to GitHub as you progress.
+
+Update Sequence Diagram document
+
+Update the Domain Model document
+
+Update the Architecture Design document with its description
