@@ -31,12 +31,12 @@ public class PlayerControls : MonoBehaviour
         {
             facingRight = true;
         }
-        else if (Velx < 0) ;
+        else if (Velx < 0)
         {
             facingRight = false;
         }
 
-        if (((facingRight) && (localScale.x < 0)) || ((!facingRight) && (localScale.x > localScale.x > 0)))
+        if (((facingRight) && (localScale.x < 0)) || ((!facingRight) && (localScale.x > 0)))
         {
             localScale.x *= -1;
         }
