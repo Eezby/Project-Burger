@@ -21,12 +21,22 @@ public class PlayerController2D : MonoBehaviour
     Rigidbody2D rb2d;
     SpriteRenderer spriteRenderer;
 
+    //stats
+    public int currentHealth;
+    public int maxHealth = 3;
+
+    public int currentLives;
+
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        currentHealth = maxHealth;
+        currentLives = 3;
     }
 
     // Update is called once per frame
@@ -68,5 +78,37 @@ public class PlayerController2D : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
         //  animator.Play("Player_jump");
         }
+
+        if(currentHealth > maxHealth){
+            currentHealth = maxHealth;
+        }
+        if(currentHealth <= 0){
+            Die();
+        }
+    }
+
+    void Die(){
+        //Application.LoadLevel(Application.loadedLevel);   // supposedly outdated, we'll see
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    } 
+
+    public void Damage(int damage){
+
+        currentHealth -= damage;
+
+    }
+
+    public IEnumerator Knockback(float knockbackDuration, float knockbackPower, Vector3 knockbackDirection){
+        
+        float timer = 0;
+
+        while(knockbackDuration > timer){
+            timer += Time.deltaTime;
+            rb2d.AddForce(new Vector3(knockbackDirection.x + -10,
+                knockbackDirection.y + knockbackPower, transform.position.z));
+        }
+
+        yield return 0;
     }
 }
