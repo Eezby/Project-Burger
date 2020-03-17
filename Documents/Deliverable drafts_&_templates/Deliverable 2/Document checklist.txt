@@ -1,4 +1,4 @@
-﻿Sprint 2 and 3 reviews–Software and Documents
+﻿Sprint 2 and 3 reviews–Software and Documents ************DONE**************
 
 Daily Scrum –The progress should be reported on GitHub and ZenHub. ************DONE**************
 
@@ -7,7 +7,7 @@ Update Project Description User Storydocuments (if required).************DONE***
 
 
 
-Update Product Backlog and Sprint Backlog documents.
+Update Product Backlog and Sprint Backlog documents. ************DONE**************
 
 
 
@@ -47,5 +47,5 @@ Update GitHub and push software development to GitHub as you progress. *********
 
 A new version of the application should be available onGitHub. ************DONE**************
 
-The software should include all the  dependencies  and  should  be  downloadable  including  the  jar  file. 
-It  also  needs  to  include README file.
+The software should include all the  dependencies  and  should  be  downloadable  including  the  jar  file. ************DONE**************
+It  also  needs  to  include README file.************DONE**************
