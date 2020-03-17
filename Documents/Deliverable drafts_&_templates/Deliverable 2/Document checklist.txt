@@ -1,4 +1,4 @@
-Sprint 2 and 3 reviews–Software and Documents
+﻿Sprint 2 and 3 reviews–Software and Documents
 
 Daily Scrum –The progress should be reported on GitHub and ZenHub. ************DONE**************
 
@@ -39,7 +39,7 @@ Create the Domain Model document.
 
 
 
-Create Sprint Review document for sprint 2 and 3.
+Create Sprint Review document for sprint 2 and 3.   ************DONE**************
 
 
 
