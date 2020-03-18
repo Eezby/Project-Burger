@@ -373,6 +373,9 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 3
   currentLives: 0
+  FrenchFryPrefab: {fileID: 7061114259259992131, guid: cd6036c737f513549ad4be1a732f1735,
+    type: 3}
+  attackDelay: 0
 --- !u!95 &388917014
 Animator:
   serializedVersion: 3

@@ -27,6 +27,8 @@ public class PlayerController2D : MonoBehaviour
 
     public int currentLives;
 
+    public GameObject FrenchFryPrefab;
+    public float attackDelay = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +87,12 @@ public class PlayerController2D : MonoBehaviour
         if(currentHealth <= 0){
             Die();
         }
+
+        attackDelay -= Time.deltaTime;
+        if (Input.GetKeyDown("x"))
+        {
+            Attack();
+        }
     }
 
     void Die(){
@@ -110,5 +118,26 @@ public class PlayerController2D : MonoBehaviour
         }
 
         yield return 0;
+    }
+
+    public void Attack()
+    {
+        //Check if delay between attacks has expired
+        if (attackDelay <= 0)
+        {
+            //Create projectile object and set it's position to the player's position
+            GameObject fry = Instantiate(FrenchFryPrefab) as GameObject;
+            fry.transform.position = rb2d.transform.position;
+            //flip velocity if the player is turned arround
+            if (spriteRenderer.flipX)
+            {
+                fry.GetComponent<FrenchFry>().speed = -fry.GetComponent<FrenchFry>().speed;
+            }
+            //if the player is moving, make the projectile move faster with the player
+            fry.GetComponent<FrenchFry>().speed.x += rb2d.velocity.x;
+
+            attackDelay = 0.5f;
+        }
+        
     }
 }
