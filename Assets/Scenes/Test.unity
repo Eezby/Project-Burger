@@ -370,6 +370,7 @@ MonoBehaviour:
   groundCheckM: {fileID: 1142296732}
   groundCheckL: {fileID: 1112431846}
   groundCheckR: {fileID: 397220302}
+  animator: {fileID: 388917014}
   currentHealth: 0
   maxHealth: 3
   currentLives: 0
@@ -383,7 +384,7 @@ Animator:
   m_GameObject: {fileID: 388917008}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0ab5b1f49238a54386cf0ce9a3249df, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
