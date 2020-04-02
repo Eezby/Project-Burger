@@ -8,7 +8,7 @@ public class PlayerController2D : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public bool isGrounded;
-   
+
    
     
     [SerializeField]
@@ -17,7 +17,7 @@ public class PlayerController2D : MonoBehaviour
     Transform groundCheckL;
     [SerializeField]
     Transform groundCheckR;
-    Animator animator;
+    public Animator animator;
     Rigidbody2D rb2d;
     SpriteRenderer spriteRenderer;
 
@@ -51,10 +51,12 @@ public class PlayerController2D : MonoBehaviour
            (Physics2D.Linecast(transform.position, groundCheckL.position, 1 << LayerMask.NameToLayer("Ground"))) ||
            (Physics2D.Linecast(transform.position, groundCheckR.position, 1 << LayerMask.NameToLayer("Ground")))) {
                 isGrounded = true;
-            } else{
+            animator.SetBool("isJumping", false);
+        } else{
                 isGrounded = false;
-            //  animator.Play("Player_jump");
-            }
+                animator.SetBool("isJumping", true);
+         //   animator.Play("BurgerPlayer_Jumping");
+        }
         // movement right
         if(Input.GetKey("d") || Input.GetKey("right")){
             rb2d.velocity = new Vector2(moveSpeed,rb2d.velocity.y);
@@ -78,7 +80,8 @@ public class PlayerController2D : MonoBehaviour
         // player jumping
         if(Input.GetKeyDown("space") && isGrounded){
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-        //  animator.Play("Player_jump");
+            //animator.SetBool("isJumping", true);
+          
         }
 
         if(currentHealth > maxHealth){
@@ -87,12 +90,14 @@ public class PlayerController2D : MonoBehaviour
         if(currentHealth <= 0){
             Die();
         }
-
+    
         attackDelay -= Time.deltaTime;
         if (Input.GetKeyDown("x"))
         {
             Attack();
         }
+      
+        animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
     }
 
     void Die(){
