@@ -7,12 +7,14 @@ public class EnemyPatrol : MonoBehaviour
     public float speed;
     private bool movingRight = true;
     public Transform groundDetection;
+    public Animator animator;
 
     public float groundDistance;
 
     void Update(){
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-        
+        animator.SetFloat("Speed", speed);
+
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, groundDistance);
         if (groundInfo.collider == false){
             if (movingRight == true){
