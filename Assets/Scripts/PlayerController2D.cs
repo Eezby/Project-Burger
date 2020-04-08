@@ -8,8 +8,8 @@ public class PlayerController2D : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public bool isGrounded;
-   
-   
+
+    public static PlayerController2D instance;
     
     [SerializeField]
     Transform groundCheckM;
@@ -27,6 +27,13 @@ public class PlayerController2D : MonoBehaviour
 
     public int currentLives;
 
+    //public bool Moving { get { return Moving; } }
+
+    public void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
