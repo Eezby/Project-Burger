@@ -25,14 +25,14 @@ public abstract class Item : MonoBehaviour
     }
     public void PickUp(GameObject player)
     {
-        Item[] old = player.GetComponent<PlayerController2D>().items;
-        Item[] temp = new Item[old.Length + 1];
-        for(int i = 0; i < old.Length; i++)
-        {
-            temp[i] = old[i];
-        }
-        temp[temp.Length - 1] = this;
-        player.GetComponent<PlayerController2D>().items = temp;
+        //Item[] old = player.GetComponent<PlayerController2D>().items;
+        //Item[] temp = new Item[old.Length + 1];
+        //for(int i = 0; i < old.Length; i++)
+        //{
+        //    temp[i] = old[i];
+        //}
+        //temp[temp.Length - 1] = this;
+        //player.GetComponent<PlayerController2D>().items = temp;
     }
     public abstract void Use(GameObject player);
 }
