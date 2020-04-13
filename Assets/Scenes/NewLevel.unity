@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 197110291}
   - component: {fileID: 197110290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stovetop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.3273191, y: 0.05873108}
+  m_Offset: {x: 1.3273191, y: 0.118588924}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -259,7 +259,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.6546383, y: 1.1174622}
+  m_Size: {x: 3.6546383, y: 1.2371778}
   m_EdgeRadius: 0
 --- !u!4 &197110291
 Transform:
@@ -268,12 +268,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197110289}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.62, y: -2.91, z: 0.40993094}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8990399, y: -0.20892452, z: 0.16536}
+  m_LocalScale: {x: 0.39431572, y: 0.40177792, z: 0.403385}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1508609417}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485521391
 GameObject:
@@ -284,7 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485521392}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheckL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485521391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.86, y: -0.19, z: 0}
+  m_LocalPosition: {x: -1.76, y: -1.85, z: 0}
   m_LocalScale: {x: 0.60972136, y: 0.6058379, z: 1.1224}
   m_Children: []
   m_Father: {fileID: 1231605095}
@@ -590,6 +590,8 @@ GameObject:
   - component: {fileID: 771318935}
   - component: {fileID: 771318934}
   - component: {fileID: 771318937}
+  - component: {fileID: 771318938}
+  - component: {fileID: 771318939}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Untagged
@@ -604,7 +606,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771318933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0d61149a0957f048b2ffdec3c9397f4, type: 3}
   m_Name: 
@@ -668,12 +670,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771318933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.4, y: -2.29, z: 0}
+  m_LocalPosition: {x: 30, y: 25.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 939973559}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &771318937
 BoxCollider2D:
@@ -682,7 +684,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771318933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -701,6 +703,43 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4208603, y: 2.644209}
   m_EdgeRadius: 0
+--- !u!50 &771318938
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771318933}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &771318939
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771318933}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.1591816
 --- !u!1 &864759293
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1231605093}
   DamageAmount: 3
-  knockbackPower: 50
+  knockbackPower: 0
 --- !u!1 &939973558
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +872,7 @@ GameObject:
   - component: {fileID: 1229273575}
   - component: {fileID: 1229273574}
   - component: {fileID: 1229273573}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -874,7 +913,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.589101
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -898,7 +937,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229273572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.79, y: 3.93, z: -10}
+  m_LocalPosition: {x: 0.8, y: 3.37, z: -10}
   m_LocalScale: {x: 1.2089, y: 1.2089, z: 1.2089}
   m_Children: []
   m_Father: {fileID: 1231605095}
@@ -918,7 +957,7 @@ GameObject:
   - component: {fileID: 1231605097}
   - component: {fileID: 1231605096}
   - component: {fileID: 1231605099}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BurgerMan
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -981,7 +1020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231605093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.06, y: -1.71, z: 0}
+  m_LocalPosition: {x: -4.68, y: -2.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2080832808}
@@ -1004,7 +1043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 12
   isGrounded: 0
   groundCheckM: {fileID: 2080832808}
   groundCheckL: {fileID: 485521392}
@@ -1032,7 +1071,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &1231605098
 Animator:
   serializedVersion: 3
@@ -1087,7 +1126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1435223651}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheckR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435223650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.51, y: 0.01, z: 0}
+  m_LocalPosition: {x: 1.25, y: -2.07, z: 0}
   m_LocalScale: {x: 0.54323, y: 0.53977, z: 1}
   m_Children: []
   m_Father: {fileID: 1231605095}
@@ -1187,6 +1226,7 @@ Transform:
   m_Children:
   - {fileID: 527412808}
   - {fileID: 864759295}
+  - {fileID: 197110291}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1333,7 +1373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2080832808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheckM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1348,7 +1388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080832807}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17, y: -0.03, z: 0}
+  m_LocalPosition: {x: -0.38, y: -0.91, z: 0}
   m_LocalScale: {x: 0.5183718, y: 0.51507014, z: 0.95424}
   m_Children: []
   m_Father: {fileID: 1231605095}
