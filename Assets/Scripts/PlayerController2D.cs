@@ -83,6 +83,7 @@ public class PlayerController2D : MonoBehaviour
         // player jumping
         if(Input.GetKeyDown("space") && isGrounded){
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            SoundManagerScript.PlaySound ("jump");
         //  animator.Play("Player_jump");
         }
 
@@ -90,15 +91,26 @@ public class PlayerController2D : MonoBehaviour
             currentHealth = maxHealth;
         }
         if(currentHealth <= 0){
+
+            //NOT WORKING AS INTENDID DO NOT PLAY WITH HIGH VOLUME
+            /*SoundManagerScript.PlaySound("death");
+            StartCoroutine(Waitfordeath());*/
             Die();
+
         }
     }
 
     void Die(){
-        //Application.LoadLevel(Application.loadedLevel);   // supposedly outdated, we'll see
-
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-    } 
+    }
+
+    //NOT WORKING AS INTENDID DO NOT PLAY WITH HIGH VOLUME
+    /*public IEnumerator Waitfordeath()
+    {
+        yield return new WaitForSeconds(1f);
+        Die();
+
+    }*/
 
     public void Damage(int damage){
 
