@@ -295,7 +295,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388917008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 1.63, y: 1.78, z: 0}
+=======
+  m_LocalPosition: {x: 13.04, y: -0.58, z: 0}
+>>>>>>> master
   m_LocalScale: {x: 0.54322547, y: 0.5397683, z: 1}
   m_Children:
   - {fileID: 1142296732}
@@ -370,9 +374,19 @@ MonoBehaviour:
   groundCheckM: {fileID: 1142296732}
   groundCheckL: {fileID: 1112431846}
   groundCheckR: {fileID: 397220302}
+<<<<<<< HEAD
   currentHealth: 0
   maxHealth: 3
   currentLives: 0
+=======
+  animator: {fileID: 388917014}
+  currentHealth: 0
+  maxHealth: 3
+  currentLives: 0
+  FrenchFryPrefab: {fileID: 7061114259259992131, guid: cd6036c737f513549ad4be1a732f1735,
+    type: 3}
+  attackDelay: 0
+>>>>>>> master
 --- !u!95 &388917014
 Animator:
   serializedVersion: 3
@@ -383,7 +397,7 @@ Animator:
   m_GameObject: {fileID: 388917008}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0ab5b1f49238a54386cf0ce9a3249df, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -884,7 +898,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.0066347, y: 4.9917793}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!1 &803744996
+=======
+--- !u!1 &845298409
+>>>>>>> master
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -892,22 +910,34 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 803744997}
   - component: {fileID: 803744999}
   - component: {fileID: 803744998}
   m_Layer: 8
   m_Name: floor2 (1)
+=======
+  - component: {fileID: 845298410}
+  - component: {fileID: 845298411}
+  m_Layer: 8
+  m_Name: LavaFloor
+>>>>>>> master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &803744997
+=======
+--- !u!4 &845298410
+>>>>>>> master
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 803744996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.292, y: -0.2, z: 0}
@@ -1018,6 +1048,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+=======
+  m_GameObject: {fileID: 845298409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+>>>>>>> master
   m_Father: {fileID: 2046674801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1672,7 +1709,11 @@ MonoBehaviour:
   player: {fileID: 388917008}
   DamageAmount: 1
   knockbackPower: 88
+<<<<<<< HEAD
 --- !u!1001 &44664957831464829
+=======
+--- !u!1001 &8017628444282035307
+>>>>>>> master
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1687,12 +1728,20 @@ PrefabInstance:
     - target: {fileID: 44664956923843846, guid: ac255a99d68c33d4e8fd7f8e5f7db03f,
         type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: -11.29
+=======
+      value: 0.571
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 44664956923843846, guid: ac255a99d68c33d4e8fd7f8e5f7db03f,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
       value: -2.89
+=======
+      value: -2.849
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 44664956923843846, guid: ac255a99d68c33d4e8fd7f8e5f7db03f,
         type: 3}
