@@ -35,11 +35,11 @@ public class PlayerController2D : MonoBehaviour
 
     //public bool Moving { get { return Moving; } }
 
-    public void Awake()
+    /*public void Awake()
     {
         if (instance == null)
             instance = this;
-    }
+    }*/
 
     // Start is called before the first frame update
     void Start()
