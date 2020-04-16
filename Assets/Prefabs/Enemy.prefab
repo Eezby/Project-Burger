@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 44664956923843847}
   - component: {fileID: 44664956923843844}
   - component: {fileID: 44664956923843841}
+  - component: {fileID: 8017628443905391199}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   groundDetection: {fileID: 44664957797280766}
+  animator: {fileID: 8017628443905391199}
   groundDistance: 0.4
 --- !u!61 &44664956923843841
 BoxCollider2D:
@@ -123,6 +125,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2, y: 3.2}
   m_EdgeRadius: 0
+--- !u!95 &8017628443905391199
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44664956923843845}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3d69a13c1078954daccc169383e17e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &44664957797280767
 GameObject:
   m_ObjectHideFlags: 0

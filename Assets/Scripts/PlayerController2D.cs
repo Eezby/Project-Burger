@@ -9,7 +9,7 @@ public class PlayerController2D : MonoBehaviour
     public float jumpForce;
     public bool isGrounded;
 
-    public static PlayerController2D instance;
+    //public static PlayerController2D instance;        //not in master
     
     [SerializeField]
     Transform groundCheckM;
@@ -17,7 +17,7 @@ public class PlayerController2D : MonoBehaviour
     Transform groundCheckL;
     [SerializeField]
     Transform groundCheckR;
-    Animator animator;
+    public Animator animator;                           //added public
     Rigidbody2D rb2d;
     SpriteRenderer spriteRenderer;
 
@@ -26,6 +26,12 @@ public class PlayerController2D : MonoBehaviour
     public int maxHealth = 3;
 
     public int currentLives;
+
+    /// <summary>
+    /// added from master
+    /// </summary>
+    public GameObject FrenchFryPrefab;
+    public float attackDelay = 0;
 
     //public bool Moving { get { return Moving; } }
 
@@ -56,10 +62,12 @@ public class PlayerController2D : MonoBehaviour
            (Physics2D.Linecast(transform.position, groundCheckL.position, 1 << LayerMask.NameToLayer("Ground"))) ||
            (Physics2D.Linecast(transform.position, groundCheckR.position, 1 << LayerMask.NameToLayer("Ground")))) {
                 isGrounded = true;
-            } else{
+            animator.SetBool("isJumping", false);       //added from master
+        } else{
                 isGrounded = false;
+                animator.SetBool("isJumping", true);    //added from master
             //  animator.Play("Player_jump");
-            }
+        }
         // movement right
         if(Input.GetKey("d") || Input.GetKey("right")){
             rb2d.velocity = new Vector2(moveSpeed,rb2d.velocity.y);
@@ -98,6 +106,14 @@ public class PlayerController2D : MonoBehaviour
             Die();
 
         }
+        //Added from master
+        attackDelay -= Time.deltaTime;
+        if (Input.GetKeyDown("x"))
+        {
+            Attack();
+        }
+
+        animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
     }
 
     void Die(){
@@ -130,4 +146,28 @@ public class PlayerController2D : MonoBehaviour
 
         yield return 0;
     }
+
+    //Added from master
+    public void Attack()
+    {
+        //Check if delay between attacks has expired
+        if (attackDelay <= 0)
+        {
+            //Create projectile object and set it's position to the player's position
+            GameObject fry = Instantiate(FrenchFryPrefab) as GameObject;
+            fry.transform.position = rb2d.transform.position;
+            //flip velocity if the player is turned arround
+            if (spriteRenderer.flipX)
+            {
+                fry.GetComponent<FrenchFry>().speed = -fry.GetComponent<FrenchFry>().speed;
+            }
+            //if the player is moving, make the projectile move faster with the player
+            fry.GetComponent<FrenchFry>().speed.x += rb2d.velocity.x;
+
+            attackDelay = 0.5f;
+        }
+
+    }
+
+
 }
