@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController2D : MonoBehaviour
 {
@@ -30,19 +31,12 @@ public class PlayerController2D : MonoBehaviour
 
     public int currentLives;
 
-    /// <summary>
-    /// added from master
-    /// </summary>
+
     public GameObject FrenchFryPrefab;
     public float attackDelay = 0;
 
     //public bool Moving { get { return Moving; } }
 
-    /*public void Awake()
-    {
-        if (instance == null)
-            instance = this;
-    }*/
 
     // Start is called before the first frame update
     void Start()
@@ -50,9 +44,9 @@ public class PlayerController2D : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //lives = GetComponent<Text>();
+        lives = GetComponent<Text>();
         currentHealth = maxHealth;
-        //currentLives = 3;
+        currentLives = 3;
     }
 
     // Update is called once per frame
@@ -106,6 +100,7 @@ public class PlayerController2D : MonoBehaviour
             //NOT WORKING AS INTENDID DO NOT PLAY WITH HIGH VOLUME
             /*SoundManagerScript.PlaySound("death");
             StartCoroutine(Waitfordeath());*/
+
             Die();
 
         }
