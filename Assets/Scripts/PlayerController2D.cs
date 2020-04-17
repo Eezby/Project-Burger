@@ -99,7 +99,7 @@ public class PlayerController2D : MonoBehaviour
             currentHealth = maxHealth;
         }
         if(currentHealth <= 0){
-
+            currentHealth = 0;
             //NOT WORKING AS INTENDID DO NOT PLAY WITH HIGH VOLUME
             /*SoundManagerScript.PlaySound("death");
             StartCoroutine(Waitfordeath());*/
