@@ -25,6 +25,9 @@ public class PlayerController2D : MonoBehaviour
     public int currentHealth;
     public int maxHealth = 3;
 
+    public static int livesValue = 3;
+    public Text lives;
+
     public int currentLives;
 
     /// <summary>
@@ -47,9 +50,9 @@ public class PlayerController2D : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        //lives = GetComponent<Text>();
         currentHealth = maxHealth;
-        currentLives = 3;
+        //currentLives = 3;
     }
 
     // Update is called once per frame
@@ -117,6 +120,10 @@ public class PlayerController2D : MonoBehaviour
     }
 
     void Die(){
+         //Application.LoadLevel(Application.loadedLevel);   // supposedly outdated, we'll see
+        livesValue = livesValue -1;
+        //////////////////////////////////////////////////////GAMEOVER add gameover scene
+       
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
