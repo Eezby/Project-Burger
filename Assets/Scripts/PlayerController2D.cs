@@ -51,7 +51,7 @@ public class PlayerController2D : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        lives.text = "Lives: " + livesValue;
+        //lives.text = "Lives: " + livesValue;
         // sends a line from player to grouncheck object position,
         // if line encounters anything on layer "ground", object is considered grounded
         if ((Physics2D.Linecast(transform.position, groundCheckM.position, 1 << LayerMask.NameToLayer("Ground"))) ||
