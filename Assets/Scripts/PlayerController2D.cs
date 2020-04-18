@@ -10,7 +10,6 @@ public class PlayerController2D : MonoBehaviour
     public float jumpForce;
     public bool isGrounded;
 
-    //public static PlayerController2D instance;        //not in master
     
     [SerializeField]
     Transform groundCheckM;
@@ -18,7 +17,7 @@ public class PlayerController2D : MonoBehaviour
     Transform groundCheckL;
     [SerializeField]
     Transform groundCheckR;
-    public Animator animator;                           //added public
+    public Animator animator;                           
     Rigidbody2D rb2d;
     SpriteRenderer spriteRenderer;
 
@@ -52,10 +51,10 @@ public class PlayerController2D : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        lives.text = "Lives: " + livesValue;
         // sends a line from player to grouncheck object position,
         // if line encounters anything on layer "ground", object is considered grounded
-        if((Physics2D.Linecast(transform.position, groundCheckM.position, 1 << LayerMask.NameToLayer("Ground"))) ||
+        if ((Physics2D.Linecast(transform.position, groundCheckM.position, 1 << LayerMask.NameToLayer("Ground"))) ||
            (Physics2D.Linecast(transform.position, groundCheckL.position, 1 << LayerMask.NameToLayer("Ground"))) ||
            (Physics2D.Linecast(transform.position, groundCheckR.position, 1 << LayerMask.NameToLayer("Ground")))) {
                 isGrounded = true;
