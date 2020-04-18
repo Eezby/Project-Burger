@@ -17,7 +17,11 @@ public class HUD : MonoBehaviour
 
     void Update(){
 
-        HeartUI.sprite = 
+        if (player.GetComponent<PlayerController2D>().currentHealth <= 0)
+        {
+            player.GetComponent<PlayerController2D>().currentHealth = 0;
+        }
+            HeartUI.sprite = 
             HeartSprites[player.GetComponent<PlayerController2D>().currentHealth];
 
     }
