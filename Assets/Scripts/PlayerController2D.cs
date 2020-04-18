@@ -43,7 +43,7 @@ public class PlayerController2D : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        lives = GetComponent<Text>();
+        //lives = GetComponent<Text>();
         currentHealth = maxHealth;
         currentLives = 3;
     }
