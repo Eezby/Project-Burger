@@ -8,8 +8,13 @@ public class EnemyPatrol : MonoBehaviour
     private bool movingRight = true;
     public Transform groundDetection;
     public Animator animator;
+    private Rigidbody2D rb;
 
     public float groundDistance;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {

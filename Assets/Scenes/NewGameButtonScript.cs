@@ -18,6 +18,6 @@ public class NewGameButtonScript : MonoBehaviour
     }
     public void NewGame (string LevelName)
     {
-        SceneManager.LoadScene("Test", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
     }
 }
