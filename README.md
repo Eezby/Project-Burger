@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Project-Burger
 Project-Burger is a two-dimensional video game. The game allows a user to move through a virtual environment, shoot enemies and dodge hazards.
 
@@ -11,6 +10,4 @@ Installation:
 3  Press space to jump
 4. press x to shoot
 5. Avoid hazards and enemies or just shoot them!
-=======
-# Project-Burger
->>>>>>> Start-Menu
+
