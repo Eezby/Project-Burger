@@ -10,7 +10,6 @@ public class PlayerController2D : MonoBehaviour
     public float jumpForce;
     public bool isGrounded;
 
-   
     
     [SerializeField]
     Transform groundCheckM;
@@ -18,21 +17,25 @@ public class PlayerController2D : MonoBehaviour
     Transform groundCheckL;
     [SerializeField]
     Transform groundCheckR;
-    public Animator animator;
+    public Animator animator;                           
     Rigidbody2D rb2d;
     SpriteRenderer spriteRenderer;
-
 
     //stats
     public int currentHealth;
     public int maxHealth = 3;
+
     public static int livesValue = 3;
     public Text lives;
 
     public int currentLives;
 
+
     public GameObject FrenchFryPrefab;
     public float attackDelay = 0;
+
+    //public bool Moving { get { return Moving; } }
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,26 +45,24 @@ public class PlayerController2D : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         //lives = GetComponent<Text>();
         currentHealth = maxHealth;
-       // currentLives = 3;
+        currentLives = 3;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
         lives.text = "Lives: " + livesValue;
-
         // sends a line from player to grouncheck object position,
         // if line encounters anything on layer "ground", object is considered grounded
-        if((Physics2D.Linecast(transform.position, groundCheckM.position, 1 << LayerMask.NameToLayer("Ground"))) ||
+        if ((Physics2D.Linecast(transform.position, groundCheckM.position, 1 << LayerMask.NameToLayer("Ground"))) ||
            (Physics2D.Linecast(transform.position, groundCheckL.position, 1 << LayerMask.NameToLayer("Ground"))) ||
            (Physics2D.Linecast(transform.position, groundCheckR.position, 1 << LayerMask.NameToLayer("Ground")))) {
                 isGrounded = true;
-            animator.SetBool("isJumping", false);
+            animator.SetBool("isJumping", false);       //added from master
         } else{
                 isGrounded = false;
-                animator.SetBool("isJumping", true);
-         //   animator.Play("BurgerPlayer_Jumping");
+                animator.SetBool("isJumping", true);    //added from master
+            //  animator.Play("Player_jump");
         }
         // movement right
         if(Input.GetKey("d") || Input.GetKey("right")){
@@ -86,32 +87,47 @@ public class PlayerController2D : MonoBehaviour
         // player jumping
         if(Input.GetKeyDown("space") && isGrounded){
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            //animator.SetBool("isJumping", true);
-          
+            SoundManagerScript.PlaySound ("jump");
+        //  animator.Play("Player_jump");
         }
 
         if(currentHealth > maxHealth){
             currentHealth = maxHealth;
         }
         if(currentHealth <= 0){
+            currentHealth = 0;
+            //NOT WORKING AS INTENDID DO NOT PLAY WITH HIGH VOLUME
+            /*SoundManagerScript.PlaySound("death");
+            StartCoroutine(Waitfordeath());*/
+
             Die();
+
         }
-    
+        //Added from master
         attackDelay -= Time.deltaTime;
         if (Input.GetKeyDown("x"))
         {
             Attack();
         }
-      
+
         animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
     }
 
     void Die(){
-        //Application.LoadLevel(Application.loadedLevel);   // supposedly outdated, we'll see
+         //Application.LoadLevel(Application.loadedLevel);   // supposedly outdated, we'll see
         livesValue = livesValue -1;
         //////////////////////////////////////////////////////GAMEOVER add gameover scene
+       
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-    } 
+    }
+
+    //NOT WORKING AS INTENDID DO NOT PLAY WITH HIGH VOLUME
+    /*public IEnumerator Waitfordeath()
+    {
+        yield return new WaitForSeconds(1f);
+        Die();
+
+    }*/
 
     public void Damage(int damage){
 
@@ -132,6 +148,7 @@ public class PlayerController2D : MonoBehaviour
         yield return 0;
     }
 
+    //Added from master
     public void Attack()
     {
         //Check if delay between attacks has expired
@@ -150,6 +167,8 @@ public class PlayerController2D : MonoBehaviour
 
             attackDelay = 0.5f;
         }
-        
+
     }
+
+
 }
