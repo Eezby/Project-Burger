@@ -10,6 +10,7 @@ public class EnemyPatrol : MonoBehaviour
     public Animator animator;
     private Rigidbody2D rb;
 
+
     public float groundDistance;
     private void Start()
     {
@@ -29,7 +30,7 @@ public class EnemyPatrol : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, -180, 0);
                 movingRight = false;
             }
-            else
+            else if (movingRight == false)
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 movingRight = true;
