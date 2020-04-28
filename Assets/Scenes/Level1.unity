@@ -527,7 +527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 685, y: 282}
+  m_AnchoredPosition: {x: 504, y: 269.5}
   m_SizeDelta: {x: 247.8, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203920614
@@ -639,7 +639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -334, y: 136}
+  m_AnchoredPosition: {x: -500, y: 282}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &411803169
@@ -4246,6 +4246,11 @@ PrefabInstance:
     - target: {fileID: 44664956923843845, guid: ac255a99d68c33d4e8fd7f8e5f7db03f,
         type: 3}
       propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 44664956923843845, guid: ac255a99d68c33d4e8fd7f8e5f7db03f,
+        type: 3}
+      propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 44664956923843846, guid: ac255a99d68c33d4e8fd7f8e5f7db03f,
