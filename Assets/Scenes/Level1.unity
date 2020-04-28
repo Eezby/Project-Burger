@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1231605093}
-  DamageAmount: 1
+  DamageAmount: 3
   knockbackPower: 20
 --- !u!68 &93335598
 EdgeCollider2D:
@@ -943,7 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1231605093}
-  DamageAmount: 1
+  DamageAmount: 3
   knockbackPower: 20
 --- !u!1 &535335217
 GameObject:
@@ -1669,7 +1669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1231605093}
-  DamageAmount: 1
+  DamageAmount: 3
   knockbackPower: 20
 --- !u!1 &917401997
 GameObject:
@@ -2437,8 +2437,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 58835cc8c6bfcd84f8f6416241d6953c, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3677,7 +3677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1231605093}
-  DamageAmount: 1
+  DamageAmount: 3
   knockbackPower: 20
 --- !u!68 &1709176701
 EdgeCollider2D:
