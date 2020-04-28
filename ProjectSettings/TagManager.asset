@@ -6,6 +6,7 @@ TagManager:
   tags:
   - death
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
