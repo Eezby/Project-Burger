@@ -11,12 +11,14 @@ public class SoundManagerScript : MonoBehaviour
     public AudioSource Music;
 
     public Slider Volume;
-    private float audioVolume = 1f;
+    private float audioVolume;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Music.volume = PlayerPrefs.GetFloat("MasterVolume");
+
         PlayerDeath = Resources.Load<AudioClip> ("Audio/death");
         Jump = Resources.Load<AudioClip>("Audio/jump");
         GlassBreak = Resources.Load<AudioClip>("Audio/glass_break");
@@ -28,7 +30,17 @@ public class SoundManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Music.volume = Volume.value;
+        if (Music.volume == 1)
+        {
+            Music.volume = Volume.value;
+            PlayerPrefs.SetFloat("MasterVolume", Music.volume);
+        }
+        else
+        {
+            Music.volume = PlayerPrefs.GetFloat("MasterVolume");
+        }
+        
+        
     }
     public static void PlaySound(string clip)
     {
@@ -45,10 +57,5 @@ public class SoundManagerScript : MonoBehaviour
                 audioSrc.PlayOneShot(Jump);
                 break;
         }
-    }
-    public void SetVolume(float vol)
-    {
-        audioVolume = vol;
-        PlayerPrefs.SetFloat("MasterVolume", audioVolume);
     }
 }
