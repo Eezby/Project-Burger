@@ -44,7 +44,13 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
+        GameData gameData = new GameData(GameObject.Find("BurgerMan").GetComponentInChildren<PlayerController2D>());
+        gameData.AddMouse(GameObject.Find("Mouse"));
+        gameData.AddEnemy(GameObject.Find("Enemy"));
+        gameData.AddFallingObjs(new GameObject[3] { GameObject.Find("Tomato1"), GameObject.Find("Tomato2"), GameObject.Find("Tomato3") });
+        gameData.AddTomatoSlices(new GameObject[6] { GameObject.Find("TomatoSlice1.1"), GameObject.Find("TomatoSlice1.2"), GameObject.Find("TomatoSlice1.3"), GameObject.Find("TomatoSlice2.1"), GameObject.Find("TomatoSlice2.2"), GameObject.Find("TomatoSlice2.3") });
 
+        SaveGameData.SaveData(gameData);
     }
 
     public void LoadGame()
