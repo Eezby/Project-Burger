@@ -34,6 +34,8 @@ public class PlayerController2D : MonoBehaviour
     public GameObject FrenchFryPrefab;
     public float attackDelay = 0;
 
+    private bool invinsible;
+
     //public bool Moving { get { return Moving; } }
 
 
@@ -46,6 +48,7 @@ public class PlayerController2D : MonoBehaviour
         //lives = GetComponent<Text>();
         currentHealth = maxHealth;
         currentLives = 3;
+        invinsible = false;
     }
 
     // Update is called once per frame
@@ -110,6 +113,12 @@ public class PlayerController2D : MonoBehaviour
             Attack();
         }
 
+        if (Input.GetKeyDown("g"))
+        {
+            invinsible = !invinsible;
+            Debug.Log("Invisible: " + invinsible);
+        }
+
         animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
     }
 
@@ -130,8 +139,10 @@ public class PlayerController2D : MonoBehaviour
     }*/
 
     public void Damage(int damage){
-
-        currentHealth -= damage;
+        if (!invinsible)
+        {
+            currentHealth -= damage;
+        }
 
     }
 

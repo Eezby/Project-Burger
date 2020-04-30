@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class GameData
 {
-    public int level;
+    public string level;
 
     public int currentHealth;
     public int maxHealth;
@@ -38,7 +38,7 @@ public class GameData
         moveSpeed = burgerMan.moveSpeed;
         jumpForce = burgerMan.jumpForce;
 
-        level = SceneManager.GetActiveScene().buildIndex;
+        level = SceneManager.GetActiveScene().name;
     }
 
     public void AddMouse(GameObject mouse)
