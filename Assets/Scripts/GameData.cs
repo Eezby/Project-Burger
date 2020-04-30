@@ -83,9 +83,12 @@ public class GameData
         tomatoSlicePos = new float[expectedNum, 3];
         for (int i = 0; i < tomatos.Length; i++)
         {
-            tomatoSlicePos[i, 0] = tomatos[i].transform.position.x;
-            tomatoSlicePos[i, 1] = tomatos[i].transform.position.y;
-            tomatoSlicePos[i, 2] = tomatos[i].transform.position.z;
+            if(tomatos[i] != null)
+            {
+                tomatoSlicePos[i, 0] = tomatos[i].transform.position.x;
+                tomatoSlicePos[i, 1] = tomatos[i].transform.position.y;
+                tomatoSlicePos[i, 2] = tomatos[i].transform.position.z;
+            }
         }
     }
 
@@ -96,12 +99,15 @@ public class GameData
         {
             return;
         }
-        tomatoSlicePos = new float[expectedNum, 3];
+        burgerEnemiesPos = new float[expectedNum, 3];
         for (int i = 0; i < enemies.Length; i++)
         {
-            tomatoSlicePos[i, 0] = enemies[i].transform.position.x;
-            tomatoSlicePos[i, 1] = enemies[i].transform.position.y;
-            tomatoSlicePos[i, 2] = enemies[i].transform.position.z;
+            if(enemies[i] != null)
+            {
+                burgerEnemiesPos[i, 0] = enemies[i].transform.position.x;
+                burgerEnemiesPos[i, 1] = enemies[i].transform.position.y;
+                burgerEnemiesPos[i, 2] = enemies[i].transform.position.z;
+            }
         }
     }
 
@@ -112,12 +118,15 @@ public class GameData
         {
             return;
         }
-        tomatoSlicePos = new float[expectedNum, 3];
+        droppingFloorPos = new float[expectedNum, 3];
         for (int i = 0; i < dropFloors.Length; i++)
         {
-            tomatoSlicePos[i, 0] = dropFloors[i].transform.position.x;
-            tomatoSlicePos[i, 1] = dropFloors[i].transform.position.y;
-            tomatoSlicePos[i, 2] = dropFloors[i].transform.position.z;
+            if(dropFloors[i] != null)
+            {
+                droppingFloorPos[i, 0] = dropFloors[i].transform.position.x;
+                droppingFloorPos[i, 1] = dropFloors[i].transform.position.y;
+                droppingFloorPos[i, 2] = dropFloors[i].transform.position.z;
+            }
         }
     }
 }
