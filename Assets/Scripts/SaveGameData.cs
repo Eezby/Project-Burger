@@ -27,4 +27,32 @@ public static class SaveGameData
         
     }
 
+    public static GameData LoadData()
+    {
+        string savePath = Application.persistentDataPath + saveName;
+        
+        if (File.Exists(savePath))
+        {
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            FileStream stream = null;
+            GameData gameData = null;
+            try
+            {
+                stream = new FileStream(savePath, FileMode.Open);
+                gameData = binaryFormatter.Deserialize(stream) as GameData;
+            }
+            finally
+            {
+                stream.Close();
+            }
+            return gameData;
+        }
+        else
+        {
+            Debug.Log(savePath + " does not exist");
+            return null;
+        }
+
+    }
+
 }
