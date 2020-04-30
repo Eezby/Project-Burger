@@ -14,10 +14,15 @@ public class GameData
     public float jumpForce;
     public float[] playerPosition;
 
+    // level 1
     public float[] mousePosition;
     public float[,] fallingObjPosition;
     public float[] enemyPosistion;
+
+    // level 2
     public float[,] tomatoSlicePos;
+    public float[,] burgerEnemiesPos;
+    public float[,] droppingFloorPos;
 
     public GameData(PlayerController2D burgerMan)
     {
@@ -54,11 +59,12 @@ public class GameData
 
     public void AddFallingObjs(GameObject[] tomatos)
     {
-        if(tomatos.Length != 3)
+        int expectedNum = 3;
+        if(tomatos.Length != expectedNum)
         {
             return;
         }
-        fallingObjPosition = new float[3, 3];
+        fallingObjPosition = new float[expectedNum, 3];
         for(int i = 0; i < tomatos.Length; i++)
         {
             fallingObjPosition[i, 0] = tomatos[i].transform.position.x;
@@ -69,16 +75,49 @@ public class GameData
 
     public void AddTomatoSlices(GameObject[] tomatos)
     {
-        if (tomatos.Length != 6)
+        int expectedNum = 6;
+        if (tomatos.Length != expectedNum)
         {
             return;
         }
-        tomatoSlicePos = new float[6, 3];
+        tomatoSlicePos = new float[expectedNum, 3];
         for (int i = 0; i < tomatos.Length; i++)
         {
             tomatoSlicePos[i, 0] = tomatos[i].transform.position.x;
             tomatoSlicePos[i, 1] = tomatos[i].transform.position.y;
             tomatoSlicePos[i, 2] = tomatos[i].transform.position.z;
+        }
+    }
+
+    public void AddBurgerEnemies(GameObject[] enemies)
+    {
+        int expectedNum = 6;
+        if (enemies.Length != expectedNum)
+        {
+            return;
+        }
+        tomatoSlicePos = new float[expectedNum, 3];
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            tomatoSlicePos[i, 0] = enemies[i].transform.position.x;
+            tomatoSlicePos[i, 1] = enemies[i].transform.position.y;
+            tomatoSlicePos[i, 2] = enemies[i].transform.position.z;
+        }
+    }
+
+    public void AddDroppingFloors(GameObject[] dropFloors)
+    {
+        int expectedNum = 5;
+        if (dropFloors.Length != expectedNum)
+        {
+            return;
+        }
+        tomatoSlicePos = new float[expectedNum, 3];
+        for (int i = 0; i < dropFloors.Length; i++)
+        {
+            tomatoSlicePos[i, 0] = dropFloors[i].transform.position.x;
+            tomatoSlicePos[i, 1] = dropFloors[i].transform.position.y;
+            tomatoSlicePos[i, 2] = dropFloors[i].transform.position.z;
         }
     }
 }
