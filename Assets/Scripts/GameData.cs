@@ -18,6 +18,7 @@ public class GameData
     public float[] mousePosition;
     public float[,] fallingObjPosition;
     public float[] enemyPosistion;
+    public float[] enemyScale;
 
     // level 2
     public float[,] tomatoSlicePos;
@@ -52,9 +53,15 @@ public class GameData
     public void AddEnemy(GameObject enemy)
     {
         enemyPosistion = new float[3];
+        enemyScale = new float[3];
+
         enemyPosistion[0] = enemy.transform.position.x;
         enemyPosistion[1] = enemy.transform.position.y;
         enemyPosistion[2] = enemy.transform.position.z;
+
+        enemyScale[0] = enemy.transform.localScale.x;
+        enemyScale[1] = enemy.transform.localScale.y;
+        enemyScale[2] = enemy.transform.localScale.z;
     }
 
     public void AddFallingObjs(GameObject[] tomatos)

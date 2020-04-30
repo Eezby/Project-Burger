@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -67,29 +68,27 @@ public class PauseMenu : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine()
     {
-        DontDestroyOnLoad(this);
 
+        bool destory = false;
         GameData saveGame = SaveGameData.LoadData();
-        SceneManager.LoadScene(saveGame.level);
+
+        if (!SceneManager.GetActiveScene().name.Equals(saveGame.level))
+        {
+            destory = true;
+            DontDestroyOnLoad(this);
+                    SceneManager.LoadScene(saveGame.level);
+        }
+
+
 
         while (!SceneManager.GetActiveScene().name.Equals(saveGame.level))
         {
-            Debug.Log("Active Scene: " + SceneManager.GetActiveScene().name);
-            Debug.Log("Loading Scene: " + saveGame.level);
             new WaitForSecondsRealtime(.5f);
             yield return null;
         }
-        GameObject[] newSceneObj = SceneManager.GetSceneByName(saveGame.level).GetRootGameObjects();
+        //GameObject[] newSceneObj = SceneManager.GetSceneByName(saveGame.level).GetRootGameObjects();
 
-        PlayerController2D player = null;
-
-        foreach (GameObject obj in newSceneObj)
-        {
-            if (obj.name.Equals("BurgerMan"))
-            {
-                player = obj.GetComponentInChildren<PlayerController2D>();
-            }
-        }
+        PlayerController2D player = GameObject.Find("BurgerMan").GetComponent<PlayerController2D>();
 
         player.maxHealth = saveGame.maxHealth;
         player.currentHealth = saveGame.currentHealth;
@@ -99,13 +98,71 @@ public class PauseMenu : MonoBehaviour
         player.jumpForce = saveGame.jumpForce;
         player.transform.position = new Vector3(saveGame.playerPosition[0], saveGame.playerPosition[1], saveGame.playerPosition[2]);
 
+        if (saveGame.level.Equals("Level1"))
+        {
+            GameObject mouse = GameObject.Find("Mouse");
+            if(mouse == null)
+            {
+                // create mouse
+            }
+            else
+            {
+                mouse.transform.position = new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]);
+            }
+
+            GameObject enemy = GameObject.Find("Enemy");
+            GameObject enemyClone = GameObject.Find("Enemy(Clone)");
+            if(enemyClone != null) { enemy = enemyClone; }
+            if(enemy == null)
+            {
+                // create enemy 
+                //try
+                //{
+                //    Debug.Log(Application.dataPath + "/Prefabs/Enemy.prefab");
+                // //   Object enemyPrefab = Resources.Load(Application.dataPath + "/Prefabs/Enemy.prefab");
+                //    //Assets / Prefabs / Enemy.prefab
+                //    //Instantiate(enemyPrefab, new Vector3(saveGame.enemyPosistion[0], saveGame.enemyPosistion[1], saveGame.enemyPosistion[2]), Quaternion.identity);
+                //}
+                //catch
+                //{
+                //    Debug.Log("Error loading enemy asset");
+                //}
+                string enemyPrefabPath = "Prefabs/Enemy";
+                Object enemyPrefab = Resources.Load(enemyPrefabPath);
+                if(enemyPrefab == null)
+                {
+                    throw new FileNotFoundException(enemyPrefabPath);
+                }
+                else
+                {
+                    GameObject enemyObj = (GameObject) Instantiate(enemyPrefab, new Vector3(saveGame.enemyPosistion[0], saveGame.enemyPosistion[1], saveGame.enemyPosistion[2]), Quaternion.identity);
+                    enemyObj.transform.localScale = new Vector3(saveGame.enemyScale[0], saveGame.enemyScale[1], saveGame.enemyScale[2]);
+                }
+
+
+            }
+            else
+            {
+                enemy.transform.position = new Vector3(saveGame.enemyPosistion[0], saveGame.enemyPosistion[1], saveGame.enemyPosistion[2]);
+            }
+        }
+        else if (saveGame.level.Equals("Level2"))
+        {
+
+        }
+
         ResumeGame();
-        Destroy(this);
+        if (destory)
+        {
+            Destroy(this);
+        }
+        
     }
 
     public void OptionsMenu()
     {
         SceneManager.LoadScene(4);
+        //Debug.Log(Application.dataPath + "/Prefabs/Enemy.prefab");
     }
 
     public void QuitGame()
