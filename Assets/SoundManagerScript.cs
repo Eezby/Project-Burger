@@ -29,18 +29,18 @@ public class SoundManagerScript : MonoBehaviour
 
     void Awake()
     {
-        //DontDestroyOnLoad(Music);
-
         AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume");
     }
+
     // Update is called once per frame
     void Update()
     {
-        AudioListener.volume = Volume.normalizedValue;
-        PlayerPrefs.GetFloat("MasterVolume", AudioListener.volume);
+        if (!_set)
+        {
+            AudioListener.volume = Volume.value;
+            PlayerPrefs.SetFloat("MasterVolume", AudioListener.volume);
+        }
     }
-
-
 
     public static void PlaySound(string clip)
     {
