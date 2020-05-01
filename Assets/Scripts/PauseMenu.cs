@@ -76,7 +76,7 @@ public class PauseMenu : MonoBehaviour
         {
             destory = true;
             DontDestroyOnLoad(this);
-                    SceneManager.LoadScene(saveGame.level);
+            SceneManager.LoadScene(saveGame.level);
         }
 
 
@@ -103,25 +103,39 @@ public class PauseMenu : MonoBehaviour
             GameObject mouse = GameObject.Find("Mouse");
             GameObject mouseCopy = GameObject.Find("Mouse(Copy)");
             if(mouseCopy != null) { mouse = mouseCopy; }
-            if (mouse == null)
+
+            if(saveGame.mousePosition != null)
             {
-                string mousePrefabPath = "Prefabs/Mouse";
-                Object mousePrefab = Resources.Load(mousePrefabPath);
-                if(mousePrefab == null)
+                if (mouse == null)
                 {
-                    throw new FileNotFoundException(mousePrefabPath);
+                    string mousePrefabPath = "Prefabs/Mouse";
+                    Object mousePrefab = Resources.Load(mousePrefabPath);
+                    if (mousePrefab == null)
+                    {
+                        throw new FileNotFoundException(mousePrefabPath);
+                    }
+                    else
+                    {
+                        GameObject mouseObj = (GameObject)Instantiate(mousePrefab, new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]), Quaternion.identity);
+                        mouseObj.transform.localScale = new Vector3(saveGame.mouseScale[0], saveGame.mouseScale[1], saveGame.mouseScale[2]);
+                        mouseObj.GetComponentInChildren<DamagePlayer>().player = GameObject.Find("BurgerMan");
+                    }
                 }
                 else
                 {
-                    GameObject mouseObj = (GameObject)Instantiate(mousePrefab, new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]), Quaternion.identity);
-                    mouseObj.transform.localScale = new Vector3(saveGame.mouseScale[0], saveGame.mouseScale[1], saveGame.mouseScale[2]);
+                    mouse.transform.position = new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]);
+                    mouse.transform.localScale = new Vector3(saveGame.mouseScale[0], saveGame.mouseScale[1], saveGame.mouseScale[2]);
                 }
+
             }
             else
             {
-                mouse.transform.position = new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]);
-                mouse.transform.localScale = new Vector3(saveGame.mouseScale[0], saveGame.mouseScale[1], saveGame.mouseScale[2]);
+                if(mouse != null)
+                {
+                    Destroy(mouse);
+                }
             }
+
 
             GameObject enemy = GameObject.Find("Enemy");
             GameObject enemyClone = GameObject.Find("Enemy(Clone)");

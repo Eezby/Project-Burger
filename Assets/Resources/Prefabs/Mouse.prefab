@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b891207a8b812a4fa81889cf7e24aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2181852776415263538, guid: 95fbe1f2083617d4bbf8593b6738738a, type: 3}
+  player: {fileID: 0}
   DamageAmount: 3
   knockbackPower: 0
 --- !u!1001 &8341884329148529331
