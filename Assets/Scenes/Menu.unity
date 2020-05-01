@@ -960,6 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Music: {fileID: 615479963}
+  _set: 1
   Volume: {fileID: 1908346690}
 --- !u!82 &615479963
 AudioSource:
