@@ -44,15 +44,4 @@ namespace Tests
             Assert.IsNotNull(player.GetComponent<Animator>());
         }
     }
-
-    public class MenuTests
-    {
-        public GameObject player;
-        [Test]
-        public void CharacterShouldBeInGameSpaceOnOpen()
-        {
-            var player = GameObject.FindGameObjectWithTag("Player");
-            Assert.IsNotNull(player);
-        }
-    }
 }
