@@ -3977,6 +3977,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 638720243249141088, guid: 33db05abee8019e4b9a3f9c4d9fd6b4f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 638720243249141100, guid: 33db05abee8019e4b9a3f9c4d9fd6b4f,
         type: 3}
       propertyPath: m_LocalPosition.x

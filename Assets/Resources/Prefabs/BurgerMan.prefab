@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  sprintSpeed: 0
+  sprintSpeed: 14
   jumpForce: 12
   isGrounded: 0
   groundCheckM: {fileID: 2181852777297234815}
