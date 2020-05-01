@@ -25,8 +25,12 @@ public class GameData
     public float[,] droppingFloorScale;
 
     // level 2
-    public float[,] tomatoSlicePos;
+    public float[,] tomatoSlicePos1;
+    public float[,] tomatoSliceScale1;
+    public float[,] tomatoSlicePos2;
+    public float[,] tomatoSliceScale2;
     public float[,] burgerEnemiesPos;
+    public float[,] burgerEnemiesScale;
 
     public GameData(PlayerController2D burgerMan)
     {
@@ -97,21 +101,50 @@ public class GameData
         }
     }
 
-    public void AddTomatoSlices(GameObject[] tomatos)
+    public void AddTomatoSlices1(GameObject[] tomatos)
     {
         int expectedNum = tomatos.Length;
         //if (tomatos.Length != expectedNum)
         //{
         //    return;
         //}
-        tomatoSlicePos = new float[expectedNum, 3];
+        tomatoSlicePos1 = new float[expectedNum, 3];
+        tomatoSliceScale1 = new float[expectedNum, 3];
         for (int i = 0; i < tomatos.Length; i++)
         {
             if(tomatos[i] != null)
             {
-                tomatoSlicePos[i, 0] = tomatos[i].transform.position.x;
-                tomatoSlicePos[i, 1] = tomatos[i].transform.position.y;
-                tomatoSlicePos[i, 2] = tomatos[i].transform.position.z;
+                tomatoSlicePos1[i, 0] = tomatos[i].transform.position.x;
+                tomatoSlicePos1[i, 1] = tomatos[i].transform.position.y;
+                tomatoSlicePos1[i, 2] = tomatos[i].transform.position.z;
+
+                tomatoSliceScale1[i, 0] = tomatos[i].transform.localScale.x;
+                tomatoSliceScale1[i, 1] = tomatos[i].transform.localScale.y;
+                tomatoSliceScale1[i, 2] = tomatos[i].transform.localScale.z;
+            }
+        }
+    }
+
+    public void AddTomatoSlices2(GameObject[] tomatos)
+    {
+        int expectedNum = tomatos.Length;
+        //if (tomatos.Length != expectedNum)
+        //{
+        //    return;
+        //}
+        tomatoSlicePos2 = new float[expectedNum, 3];
+        tomatoSliceScale2 = new float[expectedNum, 3];
+        for (int i = 0; i < tomatos.Length; i++)
+        {
+            if (tomatos[i] != null)
+            {
+                tomatoSlicePos2[i, 0] = tomatos[i].transform.position.x;
+                tomatoSlicePos2[i, 1] = tomatos[i].transform.position.y;
+                tomatoSlicePos2[i, 2] = tomatos[i].transform.position.z;
+
+                tomatoSliceScale2[i, 0] = tomatos[i].transform.localScale.x;
+                tomatoSliceScale2[i, 1] = tomatos[i].transform.localScale.y;
+                tomatoSliceScale2[i, 2] = tomatos[i].transform.localScale.z;
             }
         }
     }
@@ -124,6 +157,7 @@ public class GameData
         //    return;
         //}
         burgerEnemiesPos = new float[expectedNum, 3];
+        burgerEnemiesScale = new float[expectedNum, 3];
         for (int i = 0; i < enemies.Length; i++)
         {
             if(enemies[i] != null)
@@ -131,6 +165,10 @@ public class GameData
                 burgerEnemiesPos[i, 0] = enemies[i].transform.position.x;
                 burgerEnemiesPos[i, 1] = enemies[i].transform.position.y;
                 burgerEnemiesPos[i, 2] = enemies[i].transform.position.z;
+
+                burgerEnemiesScale[i, 0] = enemies[i].transform.localScale.x;
+                burgerEnemiesScale[i, 1] = enemies[i].transform.localScale.y;
+                burgerEnemiesScale[i, 2] = enemies[i].transform.localScale.z;
             }
         }
     }

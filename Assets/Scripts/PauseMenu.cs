@@ -52,12 +52,13 @@ public class PauseMenu : MonoBehaviour
             gameData.AddMouse(GameObject.Find("Mouse"));
             gameData.AddEnemy(GameObject.Find("Enemy"));
             gameData.AddFallingObjs(new GameObject[3] { GameObject.Find("Tomato1"), GameObject.Find("Tomato2"), GameObject.Find("Tomato3") });
-            gameData.AddDroppingFloors(new GameObject[4] { GameObject.Find("dropFloor1"), GameObject.Find("dropFloor2"), GameObject.Find("dropFloor3"), GameObject.Find("dropFloor4") });
+            gameData.AddDroppingFloors(new GameObject[5] { GameObject.Find("dropFloor1"), GameObject.Find("dropFloor2"), GameObject.Find("dropFloor3"), GameObject.Find("dropFloor4"), GameObject.Find("dropFloor5") });
         } else if(gameData.level.Equals("Level2"))
         {
-            gameData.AddTomatoSlices(new GameObject[6] { GameObject.Find("TomatoSlice1.1"), GameObject.Find("TomatoSlice1.2"), GameObject.Find("TomatoSlice1.3"), GameObject.Find("TomatoSlice2.1"), GameObject.Find("TomatoSlice2.2"), GameObject.Find("TomatoSlice2.3") });
+            gameData.AddTomatoSlices1(new GameObject[3] { GameObject.Find("TomatoSlice1.1"), GameObject.Find("TomatoSlice1.2"), GameObject.Find("TomatoSlice1.3")});
+            gameData.AddTomatoSlices2(new GameObject[3] { GameObject.Find("TomatoSlice2.1"), GameObject.Find("TomatoSlice2.2"), GameObject.Find("TomatoSlice2.3") });
             gameData.AddBurgerEnemies(new GameObject[6] { GameObject.Find("Enemy1"), GameObject.Find("Enemy2"), GameObject.Find("Enemy3"), GameObject.Find("Enemy4"), GameObject.Find("Enemy5"), GameObject.Find("Enemy6") });
-            gameData.AddDroppingFloors(new GameObject[5] { GameObject.Find("dropFloor1"), GameObject.Find("dropFloor1 (1)"), GameObject.Find("dropFloor1 (2)"), GameObject.Find("dropFloor1 (3)"), GameObject.Find("dropFloor1 (4)"), });
+            gameData.AddDroppingFloors(new GameObject[5] { GameObject.Find("dropFloor1"), GameObject.Find("dropFloor2"), GameObject.Find("dropFloor3"), GameObject.Find("dropFloor4"), GameObject.Find("dropFloor5"), });
         }
 
         SaveGameData.SaveData(gameData);
@@ -112,7 +113,10 @@ public class PauseMenu : MonoBehaviour
         }
         else if (saveGame.level.Equals("Level2"))
         {
-
+            SpawnSaveObj("TomatoSlice1.", "TomatoSlices", saveGame.tomatoSlicePos1, saveGame.tomatoSliceScale1);
+            SpawnSaveObj("TomatoSlice2.", "TomatoSlices", saveGame.tomatoSlicePos2, saveGame.tomatoSliceScale2);
+            SpawnSaveObj("Enemy", "BurgerEnemies", saveGame.burgerEnemiesPos, saveGame.burgerEnemiesScale);
+            SpawnSaveObj("dropFloor", "Dropping floors", saveGame.droppingFloorPos, saveGame.droppingFloorScale);
         }
 
         ResumeGame();
@@ -125,7 +129,9 @@ public class PauseMenu : MonoBehaviour
 
     private void SpawnSaveObj(string objName, string parent, float[,] position, float[,] scale)
     {
-
+        string objPrefabName = objName;
+        if (objName.Equals("TomatoSlice1.")) { objPrefabName = "TomatoSlice"; }
+        if (objName.Equals("TomatoSlice2.")) { objPrefabName = "TomatoSlice"; }
 
         for (int i = 0; i < (int)Mathf.Sqrt(position.Length); i++)
         {
