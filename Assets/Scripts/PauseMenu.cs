@@ -101,13 +101,26 @@ public class PauseMenu : MonoBehaviour
         if (saveGame.level.Equals("Level1"))
         {
             GameObject mouse = GameObject.Find("Mouse");
-            if(mouse == null)
+            GameObject mouseCopy = GameObject.Find("Mouse(Copy)");
+            if(mouseCopy != null) { mouse = mouseCopy; }
+            if (mouse == null)
             {
-                // create mouse
+                string mousePrefabPath = "Prefabs/Mouse";
+                Object mousePrefab = Resources.Load(mousePrefabPath);
+                if(mousePrefab == null)
+                {
+                    throw new FileNotFoundException(mousePrefabPath);
+                }
+                else
+                {
+                    GameObject mouseObj = (GameObject)Instantiate(mousePrefab, new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]), Quaternion.identity);
+                    mouseObj.transform.localScale = new Vector3(saveGame.mouseScale[0], saveGame.mouseScale[1], saveGame.mouseScale[2]);
+                }
             }
             else
             {
                 mouse.transform.position = new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]);
+                mouse.transform.localScale = new Vector3(saveGame.mouseScale[0], saveGame.mouseScale[1], saveGame.mouseScale[2]);
             }
 
             GameObject enemy = GameObject.Find("Enemy");
@@ -115,18 +128,6 @@ public class PauseMenu : MonoBehaviour
             if(enemyClone != null) { enemy = enemyClone; }
             if(enemy == null)
             {
-                // create enemy 
-                //try
-                //{
-                //    Debug.Log(Application.dataPath + "/Prefabs/Enemy.prefab");
-                // //   Object enemyPrefab = Resources.Load(Application.dataPath + "/Prefabs/Enemy.prefab");
-                //    //Assets / Prefabs / Enemy.prefab
-                //    //Instantiate(enemyPrefab, new Vector3(saveGame.enemyPosistion[0], saveGame.enemyPosistion[1], saveGame.enemyPosistion[2]), Quaternion.identity);
-                //}
-                //catch
-                //{
-                //    Debug.Log("Error loading enemy asset");
-                //}
                 string enemyPrefabPath = "Prefabs/Enemy";
                 Object enemyPrefab = Resources.Load(enemyPrefabPath);
                 if(enemyPrefab == null)
@@ -144,6 +145,7 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 enemy.transform.position = new Vector3(saveGame.enemyPosistion[0], saveGame.enemyPosistion[1], saveGame.enemyPosistion[2]);
+                enemy.transform.localScale = new Vector3(saveGame.enemyScale[0], saveGame.enemyScale[1], saveGame.enemyScale[2]);
             }
         }
         else if (saveGame.level.Equals("Level2"))
@@ -162,7 +164,6 @@ public class PauseMenu : MonoBehaviour
     public void OptionsMenu()
     {
         SceneManager.LoadScene(4);
-        //Debug.Log(Application.dataPath + "/Prefabs/Enemy.prefab");
     }
 
     public void QuitGame()

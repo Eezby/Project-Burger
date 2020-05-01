@@ -20,7 +20,7 @@ public class EnemyPatrol : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-        animator.SetFloat("Speed", speed);
+        if (animator != null) { animator.SetFloat("Speed", speed); }
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, groundDistance);
         if (groundInfo.collider == false)

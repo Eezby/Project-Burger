@@ -16,7 +16,9 @@ public class GameData
 
     // level 1
     public float[] mousePosition;
+    public float[] mouseScale;
     public float[,] fallingObjPosition;
+    public float[,] fallingObjScale;
     public float[] enemyPosistion;
     public float[] enemyScale;
 
@@ -44,14 +46,22 @@ public class GameData
 
     public void AddMouse(GameObject mouse)
     {
+        if (mouse == null) { return; }
         mousePosition = new float[3];
+        mouseScale = new float[3];
+
         mousePosition[0] = mouse.transform.position.x;
         mousePosition[1] = mouse.transform.position.y;
         mousePosition[2] = mouse.transform.position.z;
+
+        mouseScale[0] = mouse.transform.localScale.x;
+        mouseScale[1] = mouse.transform.localScale.y;
+        mouseScale[2] = mouse.transform.localScale.z;
     }
 
     public void AddEnemy(GameObject enemy)
     {
+        if(enemy == null) { return; }
         enemyPosistion = new float[3];
         enemyScale = new float[3];
 
