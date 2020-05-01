@@ -21,11 +21,12 @@ public class GameData
     public float[,] fallingObjScale;
     public float[] enemyPosistion;
     public float[] enemyScale;
+    public float[,] droppingFloorPos;
+    public float[,] droppingFloorScale;
 
     // level 2
     public float[,] tomatoSlicePos;
     public float[,] burgerEnemiesPos;
-    public float[,] droppingFloorPos;
 
     public GameData(PlayerController2D burgerMan)
     {
@@ -76,27 +77,33 @@ public class GameData
 
     public void AddFallingObjs(GameObject[] tomatos)
     {
-        int expectedNum = 3;
-        if(tomatos.Length != expectedNum)
-        {
-            return;
-        }
+        //int expectedNum = 3;
+        //if(tomatos.Length != expectedNum)
+        //{
+        //    return;
+        //}
+        int expectedNum = tomatos.Length;
         fallingObjPosition = new float[expectedNum, 3];
-        for(int i = 0; i < tomatos.Length; i++)
+        fallingObjScale = new float[expectedNum, 3];
+        for (int i = 0; i < tomatos.Length; i++)
         {
             fallingObjPosition[i, 0] = tomatos[i].transform.position.x;
             fallingObjPosition[i, 1] = tomatos[i].transform.position.y;
             fallingObjPosition[i, 2] = tomatos[i].transform.position.z;
+
+            fallingObjScale[i, 0] = tomatos[i].transform.localScale.x;
+            fallingObjScale[i, 1] = tomatos[i].transform.localScale.y;
+            fallingObjScale[i, 2] = tomatos[i].transform.localScale.z;
         }
     }
 
     public void AddTomatoSlices(GameObject[] tomatos)
     {
-        int expectedNum = 6;
-        if (tomatos.Length != expectedNum)
-        {
-            return;
-        }
+        int expectedNum = tomatos.Length;
+        //if (tomatos.Length != expectedNum)
+        //{
+        //    return;
+        //}
         tomatoSlicePos = new float[expectedNum, 3];
         for (int i = 0; i < tomatos.Length; i++)
         {
@@ -111,11 +118,11 @@ public class GameData
 
     public void AddBurgerEnemies(GameObject[] enemies)
     {
-        int expectedNum = 6;
-        if (enemies.Length != expectedNum)
-        {
-            return;
-        }
+        int expectedNum = enemies.Length;
+        //if (enemies.Length != expectedNum)
+        //{
+        //    return;
+        //}
         burgerEnemiesPos = new float[expectedNum, 3];
         for (int i = 0; i < enemies.Length; i++)
         {
@@ -130,12 +137,13 @@ public class GameData
 
     public void AddDroppingFloors(GameObject[] dropFloors)
     {
-        int expectedNum = 5;
-        if (dropFloors.Length != expectedNum)
-        {
-            return;
-        }
+        int expectedNum = dropFloors.Length;
+        //if (dropFloors.Length != expectedNum)
+        //{
+        //    return;
+        //}
         droppingFloorPos = new float[expectedNum, 3];
+        droppingFloorScale = new float[expectedNum, 3];
         for (int i = 0; i < dropFloors.Length; i++)
         {
             if(dropFloors[i] != null)
@@ -143,6 +151,10 @@ public class GameData
                 droppingFloorPos[i, 0] = dropFloors[i].transform.position.x;
                 droppingFloorPos[i, 1] = dropFloors[i].transform.position.y;
                 droppingFloorPos[i, 2] = dropFloors[i].transform.position.z;
+
+                droppingFloorScale[i, 0] = dropFloors[i].transform.localScale.x;
+                droppingFloorScale[i, 1] = dropFloors[i].transform.localScale.y;
+                droppingFloorScale[i, 2] = dropFloors[i].transform.localScale.z;
             }
         }
     }

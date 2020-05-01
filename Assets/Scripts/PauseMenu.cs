@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -51,6 +52,7 @@ public class PauseMenu : MonoBehaviour
             gameData.AddMouse(GameObject.Find("Mouse"));
             gameData.AddEnemy(GameObject.Find("Enemy"));
             gameData.AddFallingObjs(new GameObject[3] { GameObject.Find("Tomato1"), GameObject.Find("Tomato2"), GameObject.Find("Tomato3") });
+            gameData.AddDroppingFloors(new GameObject[4] { GameObject.Find("dropFloor1"), GameObject.Find("dropFloor2"), GameObject.Find("dropFloor3"), GameObject.Find("dropFloor4") });
         } else if(gameData.level.Equals("Level2"))
         {
             gameData.AddTomatoSlices(new GameObject[6] { GameObject.Find("TomatoSlice1.1"), GameObject.Find("TomatoSlice1.2"), GameObject.Find("TomatoSlice1.3"), GameObject.Find("TomatoSlice2.1"), GameObject.Find("TomatoSlice2.2"), GameObject.Find("TomatoSlice2.3") });
@@ -100,67 +102,12 @@ public class PauseMenu : MonoBehaviour
 
         if (saveGame.level.Equals("Level1"))
         {
-            GameObject mouse = GameObject.Find("Mouse");
-            GameObject mouseCopy = GameObject.Find("Mouse(Copy)");
-            if(mouseCopy != null) { mouse = mouseCopy; }
 
-            if(saveGame.mousePosition != null)
-            {
-                if (mouse == null)
-                {
-                    string mousePrefabPath = "Prefabs/Mouse";
-                    Object mousePrefab = Resources.Load(mousePrefabPath);
-                    if (mousePrefab == null)
-                    {
-                        throw new FileNotFoundException(mousePrefabPath);
-                    }
-                    else
-                    {
-                        GameObject mouseObj = (GameObject)Instantiate(mousePrefab, new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]), Quaternion.identity);
-                        mouseObj.transform.localScale = new Vector3(saveGame.mouseScale[0], saveGame.mouseScale[1], saveGame.mouseScale[2]);
-                        mouseObj.GetComponentInChildren<DamagePlayer>().player = GameObject.Find("BurgerMan");
-                    }
-                }
-                else
-                {
-                    mouse.transform.position = new Vector3(saveGame.mousePosition[0], saveGame.mousePosition[1], saveGame.mousePosition[2]);
-                    mouse.transform.localScale = new Vector3(saveGame.mouseScale[0], saveGame.mouseScale[1], saveGame.mouseScale[2]);
-                }
+            SpawnSaveObj("Mouse", "Mouse", "", saveGame.mousePosition, saveGame.mouseScale);
+            SpawnSaveObj("Enemy", "Enemy", "", saveGame.enemyPosistion, saveGame.enemyScale);
+            SpawnSaveObj("Tomato", "FallingObjects", saveGame.fallingObjPosition, saveGame.fallingObjScale);
+            SpawnSaveObj("dropFloor", "Floor", saveGame.droppingFloorPos, saveGame.droppingFloorScale);
 
-            }
-            else
-            {
-                if(mouse != null)
-                {
-                    Destroy(mouse);
-                }
-            }
-
-
-            GameObject enemy = GameObject.Find("Enemy");
-            GameObject enemyClone = GameObject.Find("Enemy(Clone)");
-            if(enemyClone != null) { enemy = enemyClone; }
-            if(enemy == null)
-            {
-                string enemyPrefabPath = "Prefabs/Enemy";
-                Object enemyPrefab = Resources.Load(enemyPrefabPath);
-                if(enemyPrefab == null)
-                {
-                    throw new FileNotFoundException(enemyPrefabPath);
-                }
-                else
-                {
-                    GameObject enemyObj = (GameObject) Instantiate(enemyPrefab, new Vector3(saveGame.enemyPosistion[0], saveGame.enemyPosistion[1], saveGame.enemyPosistion[2]), Quaternion.identity);
-                    enemyObj.transform.localScale = new Vector3(saveGame.enemyScale[0], saveGame.enemyScale[1], saveGame.enemyScale[2]);
-                }
-
-
-            }
-            else
-            {
-                enemy.transform.position = new Vector3(saveGame.enemyPosistion[0], saveGame.enemyPosistion[1], saveGame.enemyPosistion[2]);
-                enemy.transform.localScale = new Vector3(saveGame.enemyScale[0], saveGame.enemyScale[1], saveGame.enemyScale[2]);
-            }
         }
         else if (saveGame.level.Equals("Level2"))
         {
@@ -173,6 +120,71 @@ public class PauseMenu : MonoBehaviour
             Destroy(this);
         }
         
+    }
+
+    private void SpawnSaveObj(string objName, string parent, float[,] position, float[,] scale)
+    {
+
+
+        for (int i = 0; i < (int)Mathf.Sqrt(position.Length); i++)
+        {
+            //float[] pos = Enumerable.Range(0, position.GetLength(1)).Select(x => position[i, x]).ToArray();
+            //float[] scaless = Enumerable.Range(0, scale.GetLength(1)).Select(x => scale[i, x]).ToArray();
+            SpawnSaveObj((objName + (i + 1)), objName, parent, Enumerable.Range(0, position.GetLength(1)).Select(x => position[i, x]).ToArray(), Enumerable.Range(0, scale.GetLength(1)).Select(x => scale[i, x]).ToArray());
+        }
+    }
+
+    private void SpawnSaveObj(string objName, string objPrefabName, string parent, float[] position, float[] scale)
+    {
+        GameObject obj = GameObject.Find(objName);
+        //GameObject objCopy = GameObject.Find(objName + "(Copy)");
+        //if (objCopy != null) { obj = objCopy; }
+
+        if (position != null)
+        {
+            if (obj == null)
+            {
+                string objPrefabPath = "Prefabs/" + objPrefabName;
+                Object objPrefab = Resources.Load(objPrefabPath);
+                if (objPrefab == null)
+                {
+                    throw new FileNotFoundException(objPrefabPath);
+                }
+                else
+                {
+                    GameObject objGameObject = (GameObject)Instantiate(objPrefab, new Vector3(position[0], position[1], position[2]), Quaternion.identity);
+                    objGameObject.name = objName;
+                    objGameObject.transform.localScale = new Vector3(scale[0], scale[1], scale[2]);
+                    if (objName.Equals("Mouse")) { objGameObject.GetComponentInChildren<DamagePlayer>().player = GameObject.Find("BurgerMan"); }
+                    if (objPrefabName.Equals("Tomato")) { objGameObject.GetComponentInChildren<ObjectFall>().player = GameObject.Find("BurgerMan"); }
+                    if(parent.Length != 0)
+                    {
+                        GameObject parentObj = GameObject.Find(parent);
+                        if(parentObj != null)
+                        {
+                            objGameObject.transform.parent = parentObj.transform;
+                        }
+                        else
+                        {
+                            Debug.Log("Requested Parent Not Found for child " + objName);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                obj.transform.position = new Vector3(position[0], position[1], position[2]);
+                obj.transform.localScale = new Vector3(scale[0], scale[1], scale[2]);
+            }
+
+        }
+        else
+        {
+            if (obj != null)
+            {
+                Destroy(obj);
+            }
+        }
     }
 
     public void OptionsMenu()
