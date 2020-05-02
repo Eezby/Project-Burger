@@ -9,5 +9,7 @@ Installation:
 2. Use the left and right arrow or 'a' and 'd' keys to move the character left and right, respectifully. 
 3  Press space to jump
 4. press x to shoot
-5. Avoid hazards and enemies or just shoot them!
+5. Press and hold shift to sprint
+6. Press the esc key to pause the game and access menu options
+7. Avoid hazards and enemies or just shoot them!
 
