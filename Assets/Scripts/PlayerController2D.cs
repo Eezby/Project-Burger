@@ -141,7 +141,15 @@ public class PlayerController2D : MonoBehaviour
         livesValue = livesValue -1;
         //////////////////////////////////////////////////////GAMEOVER add gameover scene
        
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        if(livesValue < 0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
+        
     }
 
     //NOT WORKING AS INTENDID DO NOT PLAY WITH HIGH VOLUME

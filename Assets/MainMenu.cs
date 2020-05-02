@@ -17,7 +17,26 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Exit");
-        Application.Quit();
+        if (Application.isEditor)
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+        else
+        {
+            Application.Quit();
+        }
+    }
+
+    public void LoadGame()
+    {
+        if (SaveGameData.LoadData("/save.dat") != null)
+        {
+            PauseMenu pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
+            pauseMenu.LoadGame("/save.dat");
+        }
+        else
+        {
+            Debug.Log("No save file found");
+        }
     }
 }
