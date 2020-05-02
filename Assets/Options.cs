@@ -8,6 +8,17 @@ public class Options : MonoBehaviour
 
     public void Back()
     {
-        SceneManager.LoadScene(1);
+        
+        if(SaveGameData.LoadData("/temp.dat") == null)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            PauseMenu pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
+            pauseMenu.LoadGame("/temp.dat");
+            SaveGameData.DeleteSave("/temp.dat");
+        }
+        
     }
 }
