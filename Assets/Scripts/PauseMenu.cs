@@ -46,6 +46,11 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
+        SaveGame("/save.dat");
+    }
+
+    public void SaveGame(string saveName)
+    {
         GameData gameData = new GameData(GameObject.Find("BurgerMan").GetComponentInChildren<PlayerController2D>());
         if(gameData.level.Equals("Level1"))
         {
@@ -61,20 +66,27 @@ public class PauseMenu : MonoBehaviour
             gameData.AddDroppingFloors(new GameObject[5] { GameObject.Find("dropFloor1"), GameObject.Find("dropFloor2"), GameObject.Find("dropFloor3"), GameObject.Find("dropFloor4"), GameObject.Find("dropFloor5"), });
         }
 
-        SaveGameData.SaveData(gameData);
+        SaveGameData.SaveData(gameData, saveName);
     }
 
     public void LoadGame()
     {
-        if (!pauseMenuUI.activeSelf) { PauseGame(); }
-        StartCoroutine(LoadSceneRoutine());
+        LoadGame("/save.dat");
     }
 
-    private IEnumerator LoadSceneRoutine()
+    public void LoadGame(string saveName)
+    {
+        if (!pauseMenuUI.activeSelf) { PauseGame(); }
+        StartCoroutine(LoadSceneRoutine(saveName));
+    }
+
+    private IEnumerator LoadSceneRoutine(string saveName)
     {
 
         bool destory = false;
-        GameData saveGame = SaveGameData.LoadData();
+        GameData saveGame = SaveGameData.LoadData(saveName);
+        
+        if(saveGame == null) { yield break; }
 
         if (!SceneManager.GetActiveScene().name.Equals(saveGame.level))
         {
@@ -196,6 +208,7 @@ public class PauseMenu : MonoBehaviour
 
     public void OptionsMenu()
     {
+        SaveGame("/temp.dat");
         SceneManager.LoadScene(4);
     }
 

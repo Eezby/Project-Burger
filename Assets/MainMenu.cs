@@ -20,4 +20,17 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Exit");
         Application.Quit();
     }
+
+    public void LoadGame()
+    {
+        if (SaveGameData.LoadData("/save.dat") != null)
+        {
+            PauseMenu pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
+            pauseMenu.LoadGame("/save.dat");
+        }
+        else
+        {
+            Debug.Log("No save file found");
+        }
+    }
 }

@@ -6,9 +6,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveGameData
 {
-    private static readonly string saveName = "/save.dat";
+    //private static readonly string saveName = "/save.dat";
 
-    public static void SaveData(GameData gameData)
+    public static void SaveData(GameData gameData, string saveName)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         string savePath = Application.persistentDataPath + saveName;
@@ -27,7 +27,7 @@ public static class SaveGameData
         
     }
 
-    public static GameData LoadData()
+    public static GameData LoadData(string saveName)
     {
         string savePath = Application.persistentDataPath + saveName;
         
@@ -53,6 +53,17 @@ public static class SaveGameData
             return null;
         }
 
+    }
+
+    public static void DeleteSave(string saveName)
+    {
+        string savePath = Application.persistentDataPath + saveName;
+
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+        }
+        else { Debug.Log(savePath + " is already deleted"); }
     }
 
 }
