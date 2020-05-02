@@ -2,7 +2,7 @@
 Project-Burger is a two-dimensional video game. The game allows a user to move through a virtual environment, shoot enemies and dodge hazards.
 
 Installation:
-1. Download the Executable Folder and run **Project-Burger.exe**
+1. Download the Executable Folder and run **Burger Breakout.exe**
 
 ## How To Play
 1. Customize the settings screen that pops up, then click the **Play!** button.
