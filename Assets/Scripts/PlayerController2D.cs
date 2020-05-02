@@ -44,6 +44,7 @@ public class PlayerController2D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
