@@ -234,4 +234,9 @@ public class PauseMenu : MonoBehaviour
         //    Application.Quit();
         //}
     }
+
+    public void GoToLevel(string level)
+    {
+        SceneManager.LoadScene(level);
+    }
 }
